@@ -1,0 +1,4 @@
+<%= text_field_tag "amt[#{@count.to_s}]", params[:amt], placeholder: "Enter Amount to be invested" %>
+		    <%= select_tag "scheme_name[#{@count.to_s}]", "<option>Axis Long Term Equity Fund - Direct Plan - Dividend option</option>".html_safe %>
+		    <%= date_field_tag("date[#{@count.to_s}]")%>
+			  	<%= date_field_tag("for_date[#{@count.to_s}]")%>

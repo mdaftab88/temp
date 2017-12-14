@@ -1,0 +1,32 @@
+	<%= form_tag(nav_get_nav_path, :method => "get", id: "search-form") do %>
+		
+		<div id="div1">
+
+			<%= text_field_tag "amt[#{@count.to_s}]", params[:amt], placeholder: "Enter Amount to be invested" %>
+		    <%= select_tag "scheme_name[#{@count.to_s}]", "<option>Axis Long Term Equity Fund - Direct Plan - Dividend option</option>".html_safe %>
+		    <%= date_field_tag("date[#{@count.to_s}]")%>
+			  	<%= date_field_tag("for_date[#{@count.to_s}]")%>
+		</div>
+		<%= link_to "Add", "#" , remote: true%>
+		    <%= submit_tag "Search", :name => nil %>
+		
+	<% end %>
+	<br>
+	<h4><%= @investment_value unless @investment_value.nil? %> </h4>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('a').click(function(event){
+				    event.preventDefault();
+
+			    $.ajax({
+				    type: "GET",
+				    url: '/nav/index',
+				    data: {count : <%= @count.to_s %>},
+				    success: function(response){ 
+				    	
+				    }
+				});
+			});
+		});
+	</script>
